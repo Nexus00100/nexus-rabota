@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXUS — Работа и вахта</title>
+<style>
+:root{--bg:#06101b;--panel:#0b1724;--panel2:#0e1d2d;--line:#1b3147;--text:#eef5fb;--muted:#8ea2b7;--blue:#168cff;--green:#22c55e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#122b42 0,#06101b 42%);color:var(--text);font-family:Inter,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+.container{max-width:1180px;margin:auto;padding:0 20px}.top{height:68px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;letter-spacing:2px;font-size:21px}.logo b{color:#1590ff}.nav{display:flex;gap:26px;color:#9db0c3;font-size:14px}.actions{display:flex;gap:10px}.btn{border:1px solid var(--line);background:#0b1927;color:white;padding:11px 16px;border-radius:9px}.btn.primary{background:var(--blue);border-color:var(--blue)}
+.hero{padding:54px 0 28px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-90px;top:-60px;width:520px;height:420px;background:url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80') center/cover;border-radius:30px;opacity:.32;mask-image:linear-gradient(90deg,transparent,#000 35%,#000)}.hero>*{position:relative;z-index:1}.eyebrow{color:#3ca7ff;text-transform:uppercase;font-size:12px;font-weight:700;letter-spacing:1.5px}.hero h1{font-size:52px;line-height:1.04;max-width:690px;margin:12px 0}.hero p{color:#9fb1c3;max-width:620px;line-height:1.6}.benefits{display:flex;gap:25px;margin:28px 0;color:#c8d5e1;font-size:13px;flex-wrap:wrap}.search{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:9px;background:#091522;border:1px solid var(--line);padding:9px;border-radius:13px;max-width:900px}.search input,.search select{background:#0c1c2b;color:#b9c8d6;border:1px solid #1b3043;padding:14px;border-radius:8px;outline:none}.section{padding:28px 0}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.section h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:linear-gradient(180deg,#0d1c2b,#091522);border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#285477}.card img{width:100%;height:125px;object-fit:cover}.cardbody{padding:14px}.tag{display:inline-block;background:#123d2b;color:#48df83;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:700}.card h3{font-size:15px;margin:10px 0 7px}.loc,.meta{font-size:12px;color:#8fa4b8}.salary{font-size:18px;font-weight:800;color:#29a0ff;margin:11px 0}.meta{display:flex;gap:9px;flex-wrap:wrap}.drawer{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:10}.modal{max-width:520px;margin:8vh auto;background:#0a1725;border:1px solid var(--line);border-radius:16px;padding:22px}.modal input,.modal select{width:100%;margin:7px 0;background:#0e1e2e;border:1px solid var(--line);color:white;padding:13px;border-radius:8px}.close{float:right;background:none;border:0;color:#9fb1c3;font-size:22px}.tabs{display:flex;gap:8px;margin:10px 0 18px}.tab{flex:1}.dashboard{display:none}.dashboard.active{display:block}.dashgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat{padding:16px;background:#0b1927;border:1px solid var(--line);border-radius:12px}.stat strong{display:block;font-size:24px;margin-top:6px}.table{width:100%;border-collapse:collapse;background:#0b1927;border:1px solid var(--line);border-radius:12px;overflow:hidden}.table th,.table td{padding:13px;text-align:left;border-bottom:1px solid #162b3d;font-size:13px}.status{color:#48df83}.footer{border-top:1px solid rgba(255,255,255,.06);margin-top:45px;padding:30px 0;color:#73899d}.bottom{display:none}
+@media(max-width:850px){.nav{display:none}.hero h1{font-size:38px}.hero:after{opacity:.2}.search{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr 1fr}.dashgrid{grid-template-columns:1fr 1fr}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#081522;border-top:1px solid var(--line);z-index:8;justify-content:space-around;padding:11px 5px}.bottom button{background:none;border:0;color:#8ea2b7;font-size:11px}.bottom button.active{color:#2498ff}.footer{padding-bottom:75px}}
+@media(max-width:520px){.container{padding:0 14px}.hero{padding-top:35px}.hero h1{font-size:34px}.benefits{gap:12px}.search{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.card img{height:170px}.modal{margin:4vh 12px}.dashgrid{grid-template-columns:1fr 1fr}.table{font-size:11px}.table th,.table td{padding:9px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="container" style="width:100%;display:flex;align-items:center;justify-content:space-between"><div class="logo"><b>N</b> NEXUS</div><nav class="nav"><span>Вакансии</span><span>О компании</span><span>Преимущества</span><span>Отзывы</span><span>Контакты</span></nav><div class="actions"><button class="btn" onclick="openModal('login')">Войти</button><button class="btn primary" onclick="openModal('register')">Регистрация</button></div></div></header>
+
+<main>
+<section class="hero"><div class="container">
+<div class="eyebrow">Работа вахтой и по всей России</div>
+<h1>NEXUS — твой путь к стабильному заработку</h1>
+<p>Актуальные вакансии с проживанием, понятными условиями и поддержкой на всех этапах трудоустройства.</p>
+<div class="benefits"><span>◉ Официальное трудоустройство</span><span>⌂ Проживание на объектах</span><span>▣ Питание — зависит от объекта</span><span>♡ Поддержка 24/7</span></div>
+<div class="search"><input id="city" placeholder="Город"><select id="cat"><option>Все категории</option><option>Производство</option><option>Склад</option><option>Стекольное производство</option><option>Холодильные работы</option></select><input id="minsalary" placeholder="Зарплата от, ₽" type="number"><button class="btn primary" onclick="filterJobs()">🔎 Найти вакансии</button></div>
+</div></section>
+
+<section class="section"><div class="container"><div class="sectionhead"><h2>Популярные вакансии</h2><span class="muted">Все вакансии →</span></div><div class="grid" id="jobs"></div></div></section>
+
+<section class="section dashboard" id="manager"><div class="container">
+<div class="sectionhead"><h2>Кабинет менеджера</h2><button class="btn primary" onclick="openModal('add')">＋ Добавить вакансию</button></div>
+<div class="dashgrid"><div class="stat">Активных вакансий<strong>5</strong></div><div class="stat">Всего откликов<strong>124</strong></div><div class="stat">Мои кандидаты<strong>48</strong></div><div class="stat">Вышли на объект<strong>22</strong></div></div>
+<table class="table"><tr><th>Вакансия</th><th>Город</th><th>Отклики</th><th>Мест</th><th>Статус</th></tr>
+<tr><td>Рабочий на производство</td><td>Химки</td><td>32</td><td>12</td><td class="status">Активна</td></tr>
+<tr><td>Упаковщик</td><td>Липецк</td><td>28</td><td>20</td><td class="status">Активна</td></tr>
+<tr><td>Стекольный завод</td><td>Воронеж</td><td>18</td><td>15</td><td class="status">Активна</td></tr></table>
+</div></section>
+</main>
+
+<div class="drawer" id="drawer"><div class="modal"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<footer class="footer"><div class="container"><div class="logo"><b>N</b> NEXUS</div><p>Больше, чем просто работа. Найди подходящую вакансию и начни работать.</p></div></footer>
+<nav class="bottom"><button class="active" onclick="scrollTo({top:0,behavior:'smooth'})">⌂<br>Главная</button><button onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">▣<br>Вакансии</button><button onclick="openModal('login')">♡<br>Отклики</button><button onclick="openModal('login')">♙<br>Профиль</button></nav>
+
+<script>
+const data=[
+['Рабочий на производство','Химки','3750','12','Производство','https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=700&q=80'],
+['Упаковщик','Липецк','3200','20','Склад','https://images.unsplash.com/photo-1586528116493-da8b6d0c0c0d?auto=format&fit=crop&w=700&q=80'],
+['Стекольный завод','Воронеж','4200','15','Стекольное производство','https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80'],
+['Холодильщик','Саратов','4500','10','Холодильные работы','https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=700&q=80']
+];
+function render(list=data){document.getElementById('jobs').innerHTML=list.map((j,i)=>`<article class="card" onclick="openJob(${i})"><img src="${j[5]}"><div class="cardbody">${i===0?'<span class="tag">ХИТ</span>':''}<h3>${j[0]}</h3><div class="loc">⌖ ${j[1]}</div><div class="salary">${j[2]} ₽ <small>/ смена</small></div><div class="meta"><span>6/1</span><span>${j[3]} мест</span><span>⌂ Жильё: да</span></div></div></article>`).join('')}
+function filterJobs(){const c=document.getElementById('city').value.toLowerCase(),cat=document.getElementById('cat').value,min=+document.getElementById('minsalary').value||0;render(data.filter(j=>(!c||j[1].toLowerCase().includes(c))&&(cat==='Все категории'||j[4]===cat)&&+j[2]>=min))}
+function openModal(type){const d=document.getElementById('drawer');let title='',body='';
+if(type==='login') title='Вход в личный кабинет',body=`<p class="muted">Выберите тип аккаунта</p><div class="tabs"><button class="btn tab" onclick="showManager()">Менеджер</button><button class="btn tab">Соискатель</button></div><input placeholder="Телефон или e-mail"><input placeholder="Пароль" type="password"><button class="btn primary" style="width:100%">Войти</button>`;
+if(type==='register') title='Регистрация менеджера',body=`<input placeholder="ФИО"><input placeholder="Телефон"><input placeholder="Пароль" type="password"><input placeholder="Подтвердите пароль" type="password"><button class="btn primary" style="width:100%" onclick="closeModal();showManager()">Зарегистрироваться</button>`;
+if(type==='add') title='Добавление вакансии',body=`<input placeholder="Название вакансии"><input placeholder="Город"><input placeholder="Ставка за смену"><input placeholder="Количество мест"><select><option>6/1</option><option>5/2</option><option>Вахта</option></select><button class="btn primary" style="width:100%" onclick="closeModal()">Сохранить вакансию</button>`;
+if(type==='job') title='Рабочий на производство',body=`<div class="salary">3 750 ₽ / смена</div><p class="muted">📍 Химки, Московская область</p><p>График 6/1 · 12 мест · проживание предоставляется.</p><h3>Требования</h3><p class="muted">Опыт не обязателен. Ответственность и желание работать.</p><button class="btn primary" style="width:100%" onclick="alert('Отклик отправлен менеджеру')">Откликнуться</button>`;
+document.getElementById('modalContent').innerHTML='<h2>'+title+'</h2>'+body;d.style.display='block'}
+function openJob(i){openModal('job')}function closeModal(){document.getElementById('drawer').style.display='none'}function showManager(){closeModal();document.getElementById('manager').classList.add('active');document.getElementById('manager').scrollIntoView({behavior:'smooth'})}
+render();
+</script>
+</body></html>
